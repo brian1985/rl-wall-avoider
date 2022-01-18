@@ -1,26 +1,28 @@
-# Deep Reinforcement Learning (RL) Using Python
+See original project that this was based off of for learning purposes here: 
 
-![](https://cdn-images-1.medium.com/max/2560/1*a9F8vOTfpDEM52eW5SSXAQ.jpeg)
+https://github.com/ModMaamari/reinforcement-learning-using-python
 
-Explanation of the game rules | The game played by a human
-:-------------------------:|:-------------------------:
-![](images/gifs/envExp.gif)  |  ![](images/gifs/EnvPlayed.gif)
+Modifications include updating to work with TensorFlow 2.7
 
-In this tutorial series, we are going through every step of building an expert Reinforcement Learning (RL) agent that is capable of playing games.
+Many additional changes include:
 
-This series is divided into three parts:
 
-* **Part 1**: Designing and Building the Game Environment. In this part we will build a game environment and customize it to make the RL agent able to train on it.
+Adjusted the code to work with TF 2.7 (up from 2.3 probably)
 
-* **Part 2**: Build and Train the Deep Q Neural Network (DQN). In this part, we define and build the different layers of DQN and train it.
+Added the ability to move and resize on the same step (4 additional actions)
 
-* **Part 3**: Test and Play the Game.
+Changed reward system slightly to penalize fail more harshly, Also added in penalizing reward for extra movements (reducing wiggle of person during intermediate steps) by penalizing a movement.
 
-We might also try making another simple game environment and use Q-Learning to create an agent that can play this simple game.
+Changed model structure to include additional CNN layers, and added kernal regularizers to handle the larger model.
 
-## The Motivation:
+Added a saved model a person can use to play the game with (see computerPlayer_Test.py) that performs without issue at least to a score of 1600 but likely forever (LEFTRIGHT actions only).
 
-One time I was in the rabbit hole of YouTube and [THIS VIDEO](https://www.youtube.com/watch?v=k-rWB1jOt9s) was recommended to me, it was about the **sense of self **in human babies, after watching the video a similar question popped into my mind* “Can I develop a smart agent that is smart enough to have a sense of its body and has the ability to change its features to accomplish a certain task?”*
+Added the ability to load an existing model (developer in charge of assuring achitecture matches) for pretraining so you can pick up where left off if desired. To do so manually copy the model name + path into the DQNAgent.load_pretrained_model
 
-This series is my way of answering this question.
+Added config files for use with multiple styles of training and progression. For instance the LeftrightOnly config trains a model with only actions for Left rigth (no resize of person width). Further development with add additional config files for other changes such as resize + move in a single action, new Environment size to accomodate a larger board making it harder to get places. 
+
+Future adds:
+I would like to add two holes sometimes both using a single hole model (to see if it can handle that change natively)
+Add random blocks periodically that would force a player to go around them
+Add bonus items as colored blocks that add bonus points. Since color isn't part of the CNN model (it assumes a single dimension on that shape element), the model would need changing.
 
