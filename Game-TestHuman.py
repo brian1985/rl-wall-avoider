@@ -4,6 +4,23 @@ from time import sleep
 import pygame, time
 import numpy as np
 
+
+"""
+Code to use arduino as input
+import serial
+import re
+
+
+board = serial.Serial("/dev/ttyACM0")
+data = board.readline()
+data = data.decode()
+data = re.sub("[^0-9|]", "", data)
+xyz = data.split("|")
+
+x/y default is 512, 0 is left/down, 1024 right/up
+z=0/1 with 1 unpressed and 0 pressed
+
+"""
 pygame.init()
 
 ######################################################################################
