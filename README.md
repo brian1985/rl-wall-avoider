@@ -19,6 +19,9 @@ Added the ability to load an existing model (developer in charge of assuring ach
 
 Added config files for use with multiple styles of training and progression. For instance the LeftrightOnly config trains a model with only actions for Left rigth (no resize of person width). Further development with add additional config files for other changes such as resize + move in a single action, new Environment size to accomodate a larger board making it harder to get places. 
 
+<b> For the truly nerdy souls, I built a arduino mega joystick that outputs a response via usb. This controller will be used by a human player to play the game. Arduino code to upload to the board can be found in the file arduino.ino   
+The python uses the pyserial package to read the input. Needs work to be smoother and playable, just first step in process for now.</b>
+
 <b>Future adds</b>:
 <li>I would like to add option for two holes to appear: test using a single hole model (to see if it can handle that change natively), and train a new model to see if the learning can pick up that the best option is the closest hole to its current location.</li>
 
